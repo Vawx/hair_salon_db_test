@@ -15,6 +15,15 @@ get '/' do
   erb :index
 end
 
+post '/add_client/:id' do
+  existing_stylist = Stylist.get_stylist_by_id(params[:id])
+  client_name = params.fetch("client_name")
+  if client_name.length > 0
+    Client.save_to_db( client_name, existing_stylist.name )
+  end
+  redirect '/'
+end
+
 post '/add_stylist' do
   client_name = params.fetch( "client_name" )
   stylist_name = params.fetch( "stylist_name" )

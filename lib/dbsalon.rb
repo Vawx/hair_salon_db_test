@@ -17,7 +17,7 @@ class DBSalon
 
   # Get specific value from column
   define_singleton_method(:get_specific_from_column) do |column_name, search_name, column_value|
-    found = DBSALON.exec("SELECT * FROM #{column_name} WHERE #{search_name} = #{column_value};")
+    found = DBSALON.exec("SELECT * FROM #{column_name} WHERE #{search_name} = '#{column_value}';")
     if column_name == "stylist"
       return Stylist.new( {name: fetch_first(found, "name"), id: fetch_first(found, "id") } )
     elsif column_name == "client"
@@ -57,6 +57,6 @@ class DBSalon
 
   # UTILITY : Fetch first from PG::Result
   define_singleton_method(:fetch_first) do |found, fetch_name|
-    return found.first.fetch(fetch_name)
+    return found.first.fetch(fetch_name) if found.first != nil
   end
 end
