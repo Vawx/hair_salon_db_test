@@ -19,6 +19,10 @@ class Stylist
       return DBSalon.get_all_specific_from_column("client", "stylist", match)
     end
 
+    define_singleton_method(:rename) do |new_name, id|
+      DBSalon.update_specific_from_column("stylist", "name", new_name, "id", id.to_i)
+    end
+
     define_singleton_method(:save_to_db) do |stylist_name|
       existing_stylist = DBSalon.get_specific_from_column("stylist", "name", stylist_name )
       if existing_stylist.name != nil

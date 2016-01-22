@@ -11,6 +11,12 @@
         </form>
       <%end%>
       </ul>
+      <div class="container">
+        <form class="" action="/rename_stylist/<%= @stylist.id %>" method="post">
+          <input type="text" name="new_stylist_name" value="" placeholder="New name...">
+          <button type="submit" class="btn btn-primary" name="button">Change name</button>
+        </form>
+      </div>
     </div>
   </div>
 </div>

@@ -31,6 +31,18 @@ post '/rename_client/:id' do
   redirect '/client/' + params[:id]
 end
 
+post '/rename_stylist/:id' do
+  new_stylist_name = params.fetch("new_stylist_name")
+  if new_stylist_name.length > 0
+    Stylist.get_all_clients( Stylist.get_stylist_by_id( params[:id] ).name ).each do |client|
+      Client.change_stylist( new_stylist_name, client.id )
+    end
+    Stylist.rename( params.fetch("new_stylist_name"), params[:id])
+    redirect'/stylist/' + params[:id]
+  end
+  redirect '/'
+end
+
 post '/add_client/:id' do
   existing_stylist = Stylist.get_stylist_by_id(params[:id])
   client_name = params.fetch("client_name")
