@@ -1,6 +1,6 @@
 
 <div class="container">
-  <div class="col-lg-6">
+  <div class="col-lg-9">
     <label for=""><h5>Existing stylists and thier clients</h5></label>
     <div class="well">
 
@@ -10,15 +10,22 @@
     <label for=""><h5>Add Stylist</h5></label>
     <div class="well">
       <form class="" action="/add_stylist" method="post">
+        <div class="wrapper" style="text-align:center;" >
+          <label for="stylist_name">Stylist</label>
+          <div class="wrapper">
+            <input type="text" name="stylist_name" value="" placeholder="Stylist Name...">
+          </div>
+        </div>
 
-      </form>
-    </div>
-  </div>
-  <div class="col-lg-3">
-    <label for=""><h5>Add Client</h5></label>
-    <div class="well">
-      <form class="" action="/add_client" method="post">
-
+        <div class="wrapper" style="text-align:center;padding-top:12px;" >
+          <label for="stylist_name">Client</label>
+          <div class="wrapper">
+            <input type="text" name="client_name" value="" placeholder="Client Name...">
+          </div>
+        </div>
+        <div class="wrapper" style="text-align:center;padding-top:12px;">
+          <button type="submit" class="btn btn-primary" name="button">Add</button>
+        </div>
       </form>
     </div>
   </div>
