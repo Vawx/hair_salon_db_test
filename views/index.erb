@@ -4,11 +4,11 @@
     <label for=""><h5>Existing stylists and thier clients</h5></label>
     <div class="well">
       <% @stylists.each do |stylist| %>
-        <h3><%= stylist.name %></h3>
+        <h3><a href="/stylist/<%= stylist.id %>"> <%= stylist.name %></h3></a>
         <ul>
           <% clients_for_stylist = Stylist.get_all_clients(stylist.name) %>
           <% clients_for_stylist.each do |client| %>
-            <li><%= client.name %></li>
+            <a href="/client/<%= client.id %>"><li><%= client.name %></li></a>
           <%end%>
         </ul>
         <form class="" action="/add_client/<%=stylist.id%>" method="post">

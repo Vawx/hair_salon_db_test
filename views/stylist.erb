@@ -1,0 +1,16 @@
+
+<div class="col-lg-6 col-lg-offset-3">
+  <label for=""style="text-align:center;">Clients for: <%= @stylist.name %></label>
+  <div class="well" style="text-align:left;">
+    <ul>
+      <% @clients.each do |client| %>
+      <div class="">
+          <a href="/client/<%= client.id %>"><li><h5><%=client.name%></h5></li></a>
+        <form class="" action="/delete_client/<%= client.id %>" method="post">
+          <button type="submit" class="btn btn-error" name="button">Delete</button>
+        </form>
+      <%end%>
+      </ul>
+    </div>
+  </div>
+</div>

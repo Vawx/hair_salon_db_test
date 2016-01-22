@@ -15,6 +15,22 @@ get '/' do
   erb :index
 end
 
+get '/client/:id' do
+  @client = Client.get_client_by_id(params[:id])
+  erb :client
+end
+
+get '/stylist/:id' do
+  @stylist = Stylist.get_stylist_by_id(params[:id])
+  @clients = Stylist.get_all_clients(@stylist.name)
+  erb :stylist
+end
+
+post '/rename_client/:id' do
+  Client.rename( params.fetch("new_client_name"), params[:id] )
+  redirect '/client/' + params[:id]
+end
+
 post '/add_client/:id' do
   existing_stylist = Stylist.get_stylist_by_id(params[:id])
   client_name = params.fetch("client_name")

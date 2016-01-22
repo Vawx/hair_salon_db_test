@@ -15,13 +15,18 @@ class DBSalon
     return insert_id;
   end
 
+  # Update value in column
+  define_singleton_method(:update_specific_from_column) do |column_name, column_id, new_value, column_field, matching_field|
+    DBSALON.exec("UPDATE #{column_name} SET #{column_id} = '#{new_value}' WHERE #{column_field} = #{matching_field};")
+  end
+
   # Get specific value from column
   define_singleton_method(:get_specific_from_column) do |column_name, search_name, column_value|
     found = DBSALON.exec("SELECT * FROM #{column_name} WHERE #{search_name} = '#{column_value}';")
     if column_name == "stylist"
       return Stylist.new( {name: fetch_first(found, "name"), id: fetch_first(found, "id") } )
     elsif column_name == "client"
-      return Client.new( {name: fetch_first( found, "name"), id: fetch_first(found, "id") } )
+      return Client.new( {name: fetch_first( found, "name"), stylist: fetch_first(found, "stylist"), id: fetch_first(found, "id") } )
     end
   end
 
