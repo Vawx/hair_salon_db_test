@@ -3,7 +3,12 @@
   <div class="col-lg-9">
     <label for=""><h5>Existing stylists and thier clients</h5></label>
     <div class="well">
-
+      <% @stylists.each do |stylist| %>
+        <h3><%= stylist.name %></h3>
+        <ul>
+          <li><%= stylist.name %> : <%= stylist.id %></li>
+        </ul>
+      <%end%>
     </div>
   </div>
   <div class="col-lg-3">

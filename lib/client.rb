@@ -1,4 +1,4 @@
-require 'dbsalon'
+require './lib/dbsalon'
 
 class Client
   attr_reader( :name, :id )
@@ -8,8 +8,8 @@ class Client
     @id = attributes.fetch(:id)
   end
 
-  define_singleton_method(:save_client_to_db) do |client|
-    result =
-    @id
+  define_singleton_method(:save_to_db) do |client_name|
+    @id = DBSalon.add_to_column( "client", client_name, "name" )
+    return @id
   end
 end
