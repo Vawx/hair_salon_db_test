@@ -20,7 +20,7 @@ post '/add_stylist' do
   stylist_name = params.fetch( "stylist_name" )
 
   if client_name.length > 0
-    Client.save_to_db(client_name)
+    Client.save_to_db(client_name, stylist_name)
   end
 
   if stylist_name.length > 0

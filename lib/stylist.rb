@@ -11,6 +11,10 @@ class Stylist
       return DBSalon.get_all_from_column("stylist")
     end
 
+    define_singleton_method(:get_all_clients) do |match|
+      return DBSalon.get_all_specific_from_column("client", "stylist", match)
+    end
+
     define_singleton_method(:save_to_db) do |stylist_name|
       @id = DBSalon.add_to_column( "stylist", stylist_name, "name" ).first.fetch("id").to_i
       return @id

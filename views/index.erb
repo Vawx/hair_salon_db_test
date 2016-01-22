@@ -6,8 +6,15 @@
       <% @stylists.each do |stylist| %>
         <h3><%= stylist.name %></h3>
         <ul>
-          <li><%= stylist.name %> : <%= stylist.id %></li>
+          <% clients_for_stylist = Stylist.get_all_clients(stylist.name) %>
+          <% clients_for_stylist.each do |client| %>
+            <li><%= client.name %></li>
+          <%end%>
         </ul>
+        <form class="" action="/add_client/<%=stylist.id%>" method="post">
+          <input type="text" name="client_name" value="" placeholder="New client name...">
+          <button type="submit" class="btn btn-primary" name="button">Add</button>
+        </form>
       <%end%>
     </div>
   </div>
