@@ -23,6 +23,10 @@ class Stylist
       DBSalon.update_specific_from_column("stylist", "name", new_name, "id", id.to_i)
     end
 
+    define_singleton_method(:delete) do |id|
+      DBSalon.delete_specific_from_column("stylist", "id", id)
+    end
+
     define_singleton_method(:save_to_db) do |stylist_name|
       existing_stylist = DBSalon.get_specific_from_column("stylist", "name", stylist_name )
       if existing_stylist.name != nil

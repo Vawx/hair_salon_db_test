@@ -2,10 +2,10 @@
     <label for=""style="text-align:center;"> Client for <%= @client.stylist %></label>
     <div class="well" style="text-align:center;">
         <h3><%= @client.name %></h3>
-        <form class="" action="/delete_client/<%= @client.id %>" method="post">
-          <button type="submit" class="btn btn-error" name="button">Delete</button>
+        <form class="" action="/delete_client/<%= @client.id %>/<%= @stylist.id %>" method="post">
+          <button type="submit" class="btn btn-danger" name="button">Delete</button>
         </form>
-        <form class="" action="/rename_client/<%= @client.id %>" method="post" style="padding-top:12px;">
+        <form class="" action="/rename_client/<%= @client.id %>/<%=@stylist.id%>" method="post" style="padding-top:12px;">
           <input type="text" name="new_client_name" value="" placeholder="New name...">
           <button type="submit" class="btn btn-primary" name="button">Change name</button>
         </form>

@@ -8,10 +8,10 @@
         <ul>
           <% clients_for_stylist = Stylist.get_all_clients(stylist.name) %>
           <% clients_for_stylist.each do |client| %>
-            <a href="/client/<%= client.id %>"><li><%= client.name %></li></a>
+            <a href="/client/<%= client.id %>/<%= stylist.id %>"><li><%= client.name %></li></a>
           <%end%>
         </ul>
-        <form class="" action="/add_client/<%=stylist.id%>" method="post">
+        <form class="" action="/add_client/<%=stylist.id%>/<%= 0 %>" method="post">
           <input type="text" name="client_name" value="" placeholder="New client name...">
           <button type="submit" class="btn btn-primary" name="button">Add</button>
         </form>

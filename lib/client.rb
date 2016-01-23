@@ -21,6 +21,10 @@ class Client
     DBSalon.update_specific_from_column("client", "name", new_name, "id", id.to_i)
   end
 
+  define_singleton_method(:delete) do |id|
+    DBSalon.delete_specific_from_column("client", "id", id)
+  end
+
   define_singleton_method(:save_to_db) do |client_name, stylist_name|
     @id = DBSalon.add_two_to_column( "client", client_name, stylist_name, "name", "stylist" )
     return @id

@@ -20,6 +20,11 @@ class DBSalon
     DBSALON.exec("UPDATE #{column_name} SET #{column_id} = '#{new_value}' WHERE #{column_field} = #{matching_field};")
   end
 
+  # Delete value in column
+  define_singleton_method(:delete_specific_from_column) do |column_name, matching_field, matching_id|
+    DBSALON.exec("DELETE FROM #{column_name} WHERE #{matching_field} = #{matching_id};")
+  end
+
   # Get specific value from column
   define_singleton_method(:get_specific_from_column) do |column_name, search_name, column_value|
     found = DBSALON.exec("SELECT * FROM #{column_name} WHERE #{search_name} = '#{column_value}';")
