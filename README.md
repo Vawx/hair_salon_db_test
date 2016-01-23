@@ -15,11 +15,11 @@ how to install postgres `https://www.learnhowtoprogram.com/ruby/ruby-database-ba
 
 `\c salon`
 
-`CREATE TABLE client (id serial PRIMARY KEY, name varchar, stylist varchar)`
+`CREATE TABLE client (id serial PRIMARY KEY, name varchar, stylist varchar);`
 
-`CREATE TABLE stylist (id serial PRIMARY KEY, name varchar )`
+`CREATE TABLE stylist (id serial PRIMARY KEY, name varchar );`
 
-`CREATE DATABASE salon_test WITH TEMPLATE salon`
+`CREATE DATABASE salon_test WITH TEMPLATE salon;`
 
 ## License
 Copyright (c) <2016> Kyle Langley - Epicodus
