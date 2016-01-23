@@ -27,9 +27,24 @@ get '/stylist/:id' do
   erb :stylist
 end
 
+get '/single_client/:id' do
+  @client = Client.get_client_by_id(params[:id])
+  erb :single_client
+end
+
+post '/add_client_to_stylist/:id/:stylist_id' do
+  Client.change_stylist( Stylist.get_stylist_by_id( params[:stylist_id] ).name, params[:id])
+  redirect '/client/' + params[:id] + '/' + params[:stylist_id]
+end
+
 post '/rename_client/:id/:stylist_id' do
   Client.rename( params.fetch("new_client_name"), params[:id] )
   redirect '/client/' + params[:id] + '/' + params[:stylist_id]
+end
+
+post 'rename_single_client/:id' do
+  Client.rename( params.fetch("new_client_name"), params[:id] )
+  redirect '/single_client/' + params[:id]
 end
 
 post '/rename_stylist/:id' do
@@ -75,15 +90,15 @@ post '/delete_client/:id/:stylist_id' do
   redirect '/stylist/' + params[:stylist_id]
 end
 
+post 'delete_single_client/:id' do
+  Client.delete(params[:id])
+  redirect '/'
+end
+
 post '/delete_stylist/:id' do
-  transfer_to = params.fetch("new_stylist_name")
-  if transfer_to.length > 0
-    Stylist.get_all_clients( Stylist.get_stylist_by_id( params[:id] ).name ).each do |client|
-      Client.change_stylist( transfer_to, client.id )
-    end
-    Stylist.delete(params[:id])
-    id = Stylist.save_to_db(transfer_to)
-    redirect '/stylist/' + id.to_s
+  Stylist.get_all_clients( Stylist.get_stylist_by_id( params[:id] ).name ).each do |client|
+    Client.change_stylist( '', client.id )
   end
-  redirect '/stylist/' + params[:id]
+  Stylist.delete(params[:id])
+  redirect '/'
 end

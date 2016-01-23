@@ -1,0 +1,19 @@
+<div class="col-lg-6 col-lg-offset-3">
+  <label for=""style="text-align:center;"> Single client</label>
+  <div class="well" style="text-align:center;">
+      <h3><%= @client.name %></h3>
+      <form class="" action="/delete_single_client/<%= @client.id %>" method="post">
+        <button type="submit" class="btn btn-danger" name="button">Delete</button>
+      </form>
+      <form class="" action="/rename_single_client/<%= @client.id %>/" method="post" style="padding-top:12px;">
+        <input type="text" name="new_client_name" value="" placeholder="New name...">
+        <button type="submit" class="btn btn-primary" name="button">Change name</button>
+      </form>
+      <% stylists = Stylist.all %>
+      <% stylists.each do |stylist| %>
+      <form class="" action="/add_client_to_stylist/<%= @client.id %>/<%= stylist.id %>" method="post" style="padding-top:12px;">
+        <button type="submit" class="btn btn-primary" name="button">Add to <%= stylist.name %></button>
+      </form>
+      <%end%>
+  </div>
+</div>

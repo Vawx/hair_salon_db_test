@@ -16,6 +16,13 @@
           <button type="submit" class="btn btn-primary" name="button">Add</button>
         </form>
       <%end%>
+      <label for=""><h5>Clients with no stylist</h5></label>
+      <% no_stylist = Client.get_clients_with_no_stylist %>
+      <ul>
+        <% no_stylist.each do |client| %>
+          <a href="/single_client/<%= client.id %>"><li><%= client.name %></li></a>
+        <%end%>
+      </ul>
     </div>
   </div>
   <div class="col-lg-3">

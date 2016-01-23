@@ -13,6 +13,10 @@ class Client
     return DBSalon.get_specific_from_column("client", "id", id.to_i)
   end
 
+  define_singleton_method(:get_clients_with_no_stylist) do
+    return DBSalon.get_all_specific_from_column( "client", "stylist", '' )
+  end
+
   define_singleton_method(:change_stylist) do |new_stylist_name, id|
     DBSalon.update_specific_from_column("client", "stylist", new_stylist_name, "id", id.to_i)
   end
