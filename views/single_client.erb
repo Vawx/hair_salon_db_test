@@ -5,7 +5,7 @@
       <form class="" action="/delete_single_client/<%= @client.id %>" method="post">
         <button type="submit" class="btn btn-danger" name="button">Delete</button>
       </form>
-      <form class="" action="/rename_single_client/<%= @client.id %>/" method="post" style="padding-top:12px;">
+      <form class="" action="/rename_single_client/<%= @client.id %>" method="post" style="padding-top:12px;">
         <input type="text" name="new_client_name" value="" placeholder="New name...">
         <button type="submit" class="btn btn-primary" name="button">Change name</button>
       </form>

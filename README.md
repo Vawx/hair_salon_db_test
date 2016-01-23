@@ -9,7 +9,17 @@ clone `https://github.com/Vawx/hair_salon_db_test`
 
 terminal `bundle install`
 
-terminal `ruby app.rb`
+how to install postgres `https://www.learnhowtoprogram.com/ruby/ruby-database-basics/installing-postgres-7fb0cff7-a0f5-4b61-a0db-8a928b9f67ef`
+
+`CREATE DATABASE salon;`
+
+`\c salon`
+
+`CREATE TABLE client (id serial PRIMARY KEY, name varchar, stylist varchar)`
+
+`CREATE TABLE stylist (id serial PRIMARY KEY, name varchar )`
+
+`CREATE DATABASE salon_test WITH TEMPLATE salon`
 
 ## License
 Copyright (c) <2016> Kyle Langley - Epicodus

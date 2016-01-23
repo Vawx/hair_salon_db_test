@@ -42,7 +42,7 @@ post '/rename_client/:id/:stylist_id' do
   redirect '/client/' + params[:id] + '/' + params[:stylist_id]
 end
 
-post 'rename_single_client/:id' do
+post '/rename_single_client/:id' do
   Client.rename( params.fetch("new_client_name"), params[:id] )
   redirect '/single_client/' + params[:id]
 end
@@ -90,7 +90,7 @@ post '/delete_client/:id/:stylist_id' do
   redirect '/stylist/' + params[:stylist_id]
 end
 
-post 'delete_single_client/:id' do
+post '/delete_single_client/:id' do
   Client.delete(params[:id])
   redirect '/'
 end
