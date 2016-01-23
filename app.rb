@@ -74,7 +74,7 @@ post '/add_client/:id/:redirect_id' do
 end
 
 post '/add_stylist' do
-  client_name = params.fetch( "client_name" )
+  client_name = params.fetch( "client_new_name" )
   stylist_name = params.fetch( "stylist_name" )
   if client_name.length > 0
     Client.save_to_db(client_name, stylist_name)
