@@ -3,6 +3,15 @@ require './app'
 Capybara.app = Sinatra::Application
 set( :show_expceptions, false )
 
+RSpec.configure do |config|
+  config.after(:each) do
+    config.after(:each) do
+      DBSALON.exec("DELETE FROM stylist *;")
+      DBSALON.exec("DELETE FROM client *;")
+    end
+  end
+end
+
 feature 'adding a new client' do
   scenario 'allows addition of new client' do
     visit '/'
