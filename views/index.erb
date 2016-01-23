@@ -12,7 +12,7 @@
           <%end%>
         </ul>
         <form class="" action="/add_client/<%=stylist.id%>/<%= 0 %>" method="post">
-          <input type="text" name="client_name" value="" placeholder="New client name...">
+          <input type="text" name="add_to_client_name" value="" placeholder="New client name...">
           <button type="submit" class="btn btn-primary" name="button">Add</button>
         </form>
       <%end%>
@@ -39,11 +39,11 @@
         <div class="wrapper" style="text-align:center;padding-top:12px;" >
           <label for="stylist_name">Client</label>
           <div class="wrapper">
-            <input type="text" name="client_name" value="" placeholder="Client Name...">
+            <input type="text" name="client_new_name" value="" placeholder="Client Name...">
           </div>
         </div>
         <div class="wrapper" style="text-align:center;padding-top:12px;">
-          <button type="submit" class="btn btn-primary" name="button">Add</button>
+          <button type="submit" class="btn btn-primary" name="submit_button">Add Match</button>
         </div>
       </form>
     </div>

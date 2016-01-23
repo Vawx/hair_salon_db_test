@@ -41,20 +41,20 @@ end
 describe Client do
   describe "#new" do
     it 'creates a new stylist, with name' do
-      new_client = Client.new( {name: "Matt", id: 0} )
+      new_client = Client.new( {name: "Matt", stylist: "kyle", id: 0} )
       expect(new_client.name).to(eq("Matt"))
     end
     it 'creates a new stylist, with id of Fixnum' do
-      new_client = Client.new( {name: "Matt", id: 1} )
+      new_client = Client.new( {name: "Matt", stylist: "kyle", id: 1} )
       expect(new_client.id).to(be_instance_of(Fixnum))
     end
     it 'adds client to the db' do
-      new_client = Client.new( {name: "Matt", id: nil } )
+      new_client = Client.new( {name: "Matt", stylist: "kyle", id: nil } )
       DB_TEST_SALON.exec("INSERT INTO client (name) VALUES ('#{new_client.name}');")
       found = DB_TEST_SALON.exec("SELECT * FROM client;")
       result_list = []
       found.each do |client|
-        result_list.push( Client.new( {name: client.fetch("name"), id: client.fetch("id")} ) )
+        result_list.push( Client.new( {name: client.fetch("name"), stylist: "kyle", id: client.fetch("id")} ) )
       end
       expect(result_list[0].name).to(eq(new_client.name))
     end
